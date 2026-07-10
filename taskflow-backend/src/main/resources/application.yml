@@ -1,0 +1,55 @@
+spring:
+  application:
+    name: taskflow-backend
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/taskflow_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: taskflow_user
+    password: taskflow_pass
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQLDialect
+    open-in-view: false
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: gowthamk2394@gmail.com
+    password: zamm raju mdrz srvj
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+server:
+  port: 8080
+
+app:
+  jwt:
+    secret: f4gfNUL5yxh8hnBXwBpNj/e2/Nupx8skK2sycXwAW6E=
+    expiration-ms: 86400000
+  file:
+    upload-dir: uploads
+    max-file-size-mb: 10
+  frontend-url: http://localhost:5173
+  invitation:
+      expiry-hours: 72
